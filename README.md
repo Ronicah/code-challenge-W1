@@ -15,7 +15,7 @@ Git
 
 ### Installation instruction
 ```
-Git clone https://github.com/hamida-mstafa/Triangle-tracker.git
+Git clone https://github.com/Ronicah/code-challenge-W1.git
 
 ```
 
@@ -24,16 +24,16 @@ Git clone https://github.com/hamida-mstafa/Triangle-tracker.git
 
 ## Technologies used
 HTML
-CSS
+
 Github
 Javascript
 
 ## Support and contact details
-github.com/hamida-mstafa
+github.com/ronicah
 
 ### License
 The content of this site is licensed under the MIT license
-Copyright (c) 2018.
+Copyright (c) 2024.
 
 
 
