@@ -20,7 +20,7 @@ Git clone https://github.com/Ronicah/code-challenge-W1.git
 ```
 
 # Live Link
-[Git](gh-pages link)
+[Git]https://github.com/Ronicah/code-challenge-W1.git
 
 ## Technologies used
 HTML
