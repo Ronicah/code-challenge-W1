@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Net Salary Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input {
+            margin-bottom: 15px;
+            padding: 8px;
+            width: 200px;
+        }
+        button {
+            padding: 10px 15px;
+        }
+    </style>
+    <script>
+        function calculateNetSalary() {
+            // Get input values
+            const basicSalary = parseFloat(document.getElementById("basicSalary").value);
+            const benefits = parseFloat(document.getElementById("benefits").value);
+
+            // Tax and deduction constants
+            const NHIF_RATE = 0.03; // 3% of gross salary
+            const NSSF_RATE = 0.06; // 6% of gross salary
+            let tax;
+
+            // Calculate gross salary
+            const grossSalary = basicSalary + benefits;
+
+            // Calculate PAYE tax (using a simplified version for example)
+            if (grossSalary <= 24000) {
+                tax = grossSalary * 0.1; // 10% for up to 24,000
+            } else if (grossSalary <= 48000) {
+                tax = 2400 + (grossSalary - 24000) * 0.15; // 2400 for first 24,000 + 15% for 24,001 to 48,000
+            } else {
+                tax = 6000 + (grossSalary - 48000) * 0.2; // 6000 for first 48,000 + 20% for above 48,000
+            }
+
+            // Calculate deductions
+            const NHIFDeductions = grossSalary * NHIF_RATE;
+            const NSSFDeductions = grossSalary * NSSF_RATE;
+
+            // Calculate net salary
+            const netSalary = grossSalary - (tax + NHIFDeductions + NSSFDeductions);
+
+            // Display results
+            document.getElementById("grossSalary").innerText = `Gross Salary: KES ${grossSalary.toFixed(2)}`;
+            document.getElementById("tax").innerText = `Tax (PAYE): KES ${tax.toFixed(2)}`;
+            document.getElementById("nhif").innerText = `NHIF Deductions: KES ${NHIFDeductions.toFixed(2)}`;
+            document.getElementById("nssf").innerText = `NSSF Deductions: KES ${NSSFDeductions.toFixed(2)}`;
+            document.getElementById("netSalary").innerText = `Net Salary: KES ${netSalary.toFixed(2)}`;
+        }
+    </script>
+</head>
+<body>
+    <h1>Net Salary Calculator</h1>
+    <label for="basicSalary">Basic Salary (KES):</label>
+    <input type="number" id="basicSalary" required />
+
+    <label for="benefits">Benefits (KES):</label>
+    <input type="number" id="benefits" required />
+
+    <button onclick="calculateNetSalary()">Calculate Net Salary</button>
+
+    <h2>Results</h2>
+    <p id="grossSalary"></p>
+    <p id="tax"></p>
+    <p id="nhif"></p>
+    <p id="nssf"></p>
+    <p id="netSalary"></p>
+</body>
+</html>
